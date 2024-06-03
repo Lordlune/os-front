@@ -17,6 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
 import { TableComponent } from '../views/components/template/table/table.component';
 
@@ -37,6 +38,7 @@ import { TableComponent } from '../views/components/template/table/table.compone
     MatDatepickerModule,
     MatPaginatorModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     RouterModule,
     TableComponent,
     HttpClientModule,
@@ -58,6 +60,7 @@ import { TableComponent } from '../views/components/template/table/table.compone
     MatSnackBarModule,
     MatMenuModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     RouterModule,
     TableComponent,
     HttpClientModule,

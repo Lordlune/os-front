@@ -8,6 +8,7 @@ import { GenericService } from '../../../../shared/generic-service/generic.servi
 import { Pessoa } from '../../../models/pessoa.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'table-component',
@@ -41,7 +42,7 @@ export class TableComponent implements AfterViewInit {
   routePath: string = '';
 
   constructor(
-    private http: GenericService,
+    protected http: GenericService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -66,9 +67,22 @@ export class TableComponent implements AfterViewInit {
   }
 
   delete(el: any) {
-    this.http.delete(`${this.routePath}/${el.id}`).subscribe((resp) => {
-      this.getAll();
-      this.http.message('Dado deletado com sucesso');
+    Swal.fire({
+      title: 'Atenção',
+      text: 'Esse dado será deletado, deseja prosseguir?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não',
+      cancelButtonColor: 'red',
+      confirmButtonColor: 'blue',
+    }).then((button) => {
+      if (button.isConfirmed) {
+        this.http.delete(`${this.routePath}/${el.id}`).subscribe((resp) => {
+          this.getAll();
+          this.http.message('Dado deletado com sucesso');
+        });
+      }
     });
   }
 
